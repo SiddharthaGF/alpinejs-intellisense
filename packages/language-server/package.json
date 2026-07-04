@@ -1,0 +1,32 @@
+{
+  "name": "@alpine-language-tools/language-server",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Language Server for Alpine Language Tools (LSP).",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node -e \"const fs=require('fs');for(const f of fs.readdirSync('src')){if(/\\.(js|d\\.ts|js\\.map|d\\.ts\\.map)$/.test(f))fs.unlinkSync('src/'+f);}\"",
+    "clean": "rm -rf dist src/*.js src/*.js.map src/*.d.ts src/*.d.ts.map",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@alpine-language-tools/alpine-spec": "workspace:*",
+    "@alpine-language-tools/language-core": "workspace:^",
+    "vscode-languageserver-textdocument": "^1.0.12",
+    "vscode-languageserver-types": "^3.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.x",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1",
+    "vitest": "^2.1.8",
+    "vscode-languageserver": "^10.1.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@alpine-language-tools/alpine-spec",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Single source of truth for Alpine.js directive metadata.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/generate-html-custom-data.mjs",
+    "postbuild": "node -e \"const fs=require('fs');for(const f of fs.readdirSync('src')){if(/\\.(js|d\\.ts|js\\.map|d\\.ts\\.map)$/.test(f))fs.unlinkSync('src/'+f);}\"",
+    "clean": "rm -rf dist data src/*.js src/*.js.map src/*.d.ts src/*.d.ts.map",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "test:unit": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "24.x",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1",
+    "vite": "^5.4.0",
+    "vitest": "^2.1.8"
+  }
+}

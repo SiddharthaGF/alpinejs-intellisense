@@ -1,0 +1,21 @@
+{
+  "name": "alpine-language-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Alpine.js Language Tools monorepo (VS Code extension + Language Server + core).",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "watch": "pnpm -r --parallel run watch",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm -r run build && pnpm -r run test",
+    "test:unit": "pnpm -r run build && pnpm -r run test:unit",
+    "package": "pnpm --filter alpine-language-tools run package",
+    "vsix": "pnpm --filter alpine-language-tools run vsix && pnpm --filter alpine-language-tools exec vsce package --no-dependencies --out ../../dist",
+    "clean": "pnpm -r run clean"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

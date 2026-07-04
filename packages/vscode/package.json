@@ -1,0 +1,164 @@
+{
+  "name": "alpine-language-tools",
+  "displayName": "Alpine.js IntelliSense",
+  "description": "Alpine.js IntelliSense for HTML and Blade",
+  "version": "0.0.20",
+  "publisher": "alpine-language-tools",
+  "preview": true,
+  "author": {
+    "name": "Pablo Santiago Guerra",
+    "url": "https://github.com/SiddharthaGF"
+  },
+  "homepage": "https://github.com/SiddharthaGF/alpinejs-intellisense",
+  "license": "MIT",
+  "icon": "assets/logo.png",
+  "private": true,
+  "main": "./dist/extension.js",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets",
+    "Syntaxes"
+  ],
+  "keywords": [
+    "alpine",
+    "alpinejs",
+    "html",
+    "blade",
+    "intellisense",
+    "completion",
+    "diagnostics",
+    "hover",
+    "definition",
+    "typescript",
+    "preview"
+  ],
+  "galleryBanner": {
+    "color": "#111827",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:html",
+    "onCommand:alpine.restart",
+    "onCommand:alpine.showOutput",
+    "onCommand:alpine.showVirtual",
+    "onCommand:alpine.showIdentifiers"
+  ],
+  "contributes": {
+    "grammars": [
+      {
+        "scopeName": "source.alpine.directives",
+        "path": "./syntaxes/alpine-injection.tmLanguage.json",
+        "injectTo": [
+          "text.html.basic",
+          "text.html.derivative",
+          "text.html.php.blade"
+        ]
+      }
+    ],
+    "html": {
+      "customData": [
+        "./data/alpine-html-custom-data.json"
+      ]
+    },
+    "commands": [
+      {
+        "command": "alpine.restart",
+        "title": "Alpine: Restart Language Server"
+      },
+      {
+        "command": "alpine.showOutput",
+        "title": "Alpine: Show Output"
+      },
+      {
+        "command": "alpine.showVirtual",
+        "title": "Alpine: Show Virtual JavaScript"
+      },
+      {
+        "command": "alpine.showIdentifiers",
+        "title": "Alpine: Show Identifiers"
+      }
+    ],
+    "configuration": {
+      "title": "Alpine Language Tools",
+      "properties": {
+        "alpineLanguageTools.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the Alpine.js Language Server."
+        },
+        "alpineLanguageTools.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "compact",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the Alpine Language Server."
+        },
+        "alpineLanguageTools.autoTriggerSuggestions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically open suggestions while typing inside Alpine directive values."
+        }
+      }
+    },
+    "semanticTokenScopes": [
+      {
+        "scopes": {
+          "keyword.control.directive.alpine": [
+            "keyword"
+          ],
+          "meta.directive.alpine.html": [
+            "variable"
+          ]
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "build": "pnpm --filter @alpine-language-tools/language-core build && pnpm run check-types && pnpm run lint && node esbuild.js && node scripts/bundle-server.mjs && node scripts/copy-data.mjs",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run assemble",
+    "vsix": "vsce package --no-dependencies --no-git-tag-version --no-update-package-json --out ../../dist",
+    "assemble": "pnpm --filter @alpine-language-tools/language-core build && pnpm run check-types && pnpm run lint && node esbuild.js --production && node scripts/bundle-server.mjs && node scripts/copy-data.mjs",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run build && pnpm run lint",
+    "test": "vscode-test",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@alpine-language-tools/alpine-spec": "workspace:*",
+    "@alpine-language-tools/language-core": "workspace:*",
+    "@alpine-language-tools/language-server": "workspace:*",
+    "vscode-languageclient": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "@types/vscode": "^1.125.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.5.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@alpine-language-tools/language-core",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Alpine Language Tools core: parsing and semantics for Alpine.js directives.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node -e \"const fs=require('fs');for(const f of fs.readdirSync('src')){if(/\\.(js|d\\.ts|js\\.map|d\\.ts\\.map)$/.test(f))fs.unlinkSync('src/'+f);}\"",
+    "clean": "rm -rf dist src/*.js src/*.js.map src/*.d.ts src/*.d.ts.map",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --passWithNoTests"
+  },
+  "devDependencies": {
+    "@types/node": "24.x",
+    "eslint": "^10.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.61.1",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@alpine-language-tools/alpine-spec": "workspace:*",
+    "@volar/language-core": "^2.4.28",
+    "vscode-html-languageservice": "^5.6.2"
+  }
+}

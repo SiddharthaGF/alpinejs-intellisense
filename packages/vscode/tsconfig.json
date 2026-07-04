@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "Node16",
+        "target": "ES2022",
+        "lib": [
+            "ES2022",
+            "ES2025.Collection",
+            "ES2025.Iterator"
+        ],
+        "types": [
+            "node",
+            "mocha",
+            "vscode"
+        ],
+        "sourceMap": true,
+        "rootDir": "src",
+        "strict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    }
+}

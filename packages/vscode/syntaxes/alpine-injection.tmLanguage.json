@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.alpine.directives",
+  "injectionSelector": "L:text.html.basic, L:text.html.derivative, L:text.html.php.blade",
+  "patterns": [
+    {
+      "name": "keyword.control.directive.alpine",
+      "match": "\\b(x-data|x-on|x-bind|x-show|x-text|x-model|x-init|x-effect|x-html|x-teleport|x-id|x-cloak|x-ref|x-for|x-if|x-transition|x-modelable)\\b"
+    },
+    {
+      "name": "keyword.control.directive.alpine",
+      "match": "(?:(?<=\\s)|^)(@\\w[\\w:-]*|:[\\w][\\w:-]*)(?=\\s*=)"
+    },
+    {
+      "contentName": "meta.embedded.inline.javascript",
+      "begin": "(?<=\\b(?:x-data|x-on|x-bind|x-show|x-text|x-model|x-init|x-effect|x-html|x-teleport|x-id|x-cloak|x-ref|x-for|x-if|x-transition|x-modelable)\\b[^>]*?)\\s*=\\s*\"",
+      "end": "\"",
+      "patterns": [
+        { "include": "source.js" }
+      ]
+    },
+    {
+      "contentName": "meta.embedded.inline.javascript",
+      "begin": "(?<=\\b(?:x-data|x-on|x-bind|x-show|x-text|x-model|x-init|x-effect|x-html|x-teleport|x-id|x-cloak|x-ref|x-for|x-if|x-transition|x-modelable)\\b[^>]*?)\\s*=\\s*'",
+      "end": "'",
+      "patterns": [
+        { "include": "source.js" }
+      ]
+    },
+    {
+      "contentName": "meta.embedded.inline.javascript",
+      "begin": "(?<=\\b(?:@\\w[\\w:-]*|:[\\w][\\w:-]*)\\s*)\\s*=\\s*\"",
+      "end": "\"",
+      "patterns": [
+        { "include": "source.js" }
+      ]
+    },
+    {
+      "contentName": "meta.embedded.inline.javascript",
+      "begin": "(?<=\\b(?:@\\w[\\w:-]*|:[\\w][\\w:-]*)\\s*)\\s*=\\s*'",
+      "end": "'",
+      "patterns": [
+        { "include": "source.js" }
+      ]
+    }
+  ]
+}

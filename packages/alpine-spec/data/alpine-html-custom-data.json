@@ -1,0 +1,86 @@
+{
+  "version": 1.1,
+  "tags": [],
+  "attributes": [
+    {
+      "name": "x-data",
+      "description": "Declares a new component scope. The expression must be a plain object expression that defines the component's data and methods.\n\n[Alpine Reference](https://alpinejs.dev/directives/data)"
+    },
+    {
+      "name": "x-init",
+      "description": "Evaluates the expression when the component initializes.\n\n[Alpine Reference](https://alpinejs.dev/directives/init)"
+    },
+    {
+      "name": "x-show",
+      "description": "Toggles `display: none` on the element based on the expression's truthiness.\n\n[Alpine Reference](https://alpinejs.dev/directives/show)"
+    },
+    {
+      "name": "x-bind",
+      "description": "Sets the value of an HTML attribute on the element to the result of evaluating the expression. Supports the `:` shorthand.\n\nModifiers: `.camel` — Converts the attribute name from kebab-case to camelCase. `.attr` — Binds the raw value through `setAttribute`.\n\n[Alpine Reference](https://alpinejs.dev/directives/bind)"
+    },
+    {
+      "name": ":",
+      "description": "Sets the value of an HTML attribute on the element to the result of evaluating the expression. Supports the `:` shorthand.\n\nShorthand for `x-bind`.\n\n[Alpine Reference](https://alpinejs.dev/directives/bind)"
+    },
+    {
+      "name": "x-on",
+      "description": "Attaches an event listener to the element. The argument names the event. Supports the `@` shorthand.\n\nModifiers: `.prevent` — Calls `event.preventDefault()`. `.stop` — Calls `event.stopPropagation()`. `.self` — Only fires when `event.target === $event.currentTarget`. `.window` — Listens for the event on the window. `.document` — Listens for the event on the document. `.passive` — Marks the listener passive. `.once` — The listener fires at most once. `.outside` — Only fires when the event happens outside the element. `.debounce` — Debounces the handler by the provided number of milliseconds. `.throttle` — Throttles the handler by the provided number of milliseconds. `.shift` — Only fires when `event.shiftKey` is true. `.control` — Only fires when `event.controlKey` is true. `.meta` — Only fires when `event.metaKey` is true. `.alt` — Only fires when `event.altKey` is true.\n\n[Alpine Reference](https://alpinejs.dev/directives/on)"
+    },
+    {
+      "name": "@",
+      "description": "Attaches an event listener to the element. The argument names the event. Supports the `@` shorthand.\n\nShorthand for `x-on`.\n\n[Alpine Reference](https://alpinejs.dev/directives/on)"
+    },
+    {
+      "name": "x-text",
+      "description": "Sets the element's `textContent` to the result of the expression.\n\n[Alpine Reference](https://alpinejs.dev/directives/text)"
+    },
+    {
+      "name": "x-html",
+      "description": "Sets the element's `innerHTML` to the result of the expression.\n\n[Alpine Reference](https://alpinejs.dev/directives/html)"
+    },
+    {
+      "name": "x-model",
+      "description": "Binds the value of an input element to a component property (two-way binding).\n\nModifiers: `.lazy` — Only syncs on the `change` event, not `input`. `.number` — Coerces the value to a number. `.trim` — Trims whitespace from the input value. `.debounce` — Debounces the bound value by the provided milliseconds. `.throttle` — Throttles the bound value by the provided milliseconds.\n\n[Alpine Reference](https://alpinejs.dev/directives/model)"
+    },
+    {
+      "name": "x-modelable",
+      "description": "Exposes the component property used by `x-model` so parents can bind to it.\n\n[Alpine Reference](https://alpinejs.dev/directives/modelable)"
+    },
+    {
+      "name": "x-for",
+      "description": "Iterates over an iterable expression. The element must be inside a `<template>`.\n\n[Alpine Reference](https://alpinejs.dev/directives/for)"
+    },
+    {
+      "name": "x-transition",
+      "description": "Applies CSS transition classes when `x-show` toggles.\n\nModifiers: `.duration` — Custom durations for the transition phases. `.delay` — Custom delays for the transition phases. `.origin` — Custom `transform-origin` for the transition. `.enter` — Custom enter classes. `.leave` — Custom leave classes. `.opacity` — Disable opacity phase animations. `.scale` — Disable scale phase animations.\n\n[Alpine Reference](https://alpinejs.dev/directives/transition)"
+    },
+    {
+      "name": "x-effect",
+      "description": "Re-evaluates the expression whenever any of its tracked dependencies change.\n\n[Alpine Reference](https://alpinejs.dev/directives/effect)"
+    },
+    {
+      "name": "x-ignore",
+      "description": "Tells Alpine to skip initialising this element and its children.\n\n[Alpine Reference](https://alpinejs.dev/directives/ignore)"
+    },
+    {
+      "name": "x-ref",
+      "description": "Registers the element with the provided name so it can be referenced later.\n\n[Alpine Reference](https://alpinejs.dev/directives/ref)"
+    },
+    {
+      "name": "x-cloak",
+      "description": "Removes the `x-cloak` attribute after Alpine initializes (used with the matching CSS rule).\n\n[Alpine Reference](https://alpinejs.dev/directives/cloak)"
+    },
+    {
+      "name": "x-teleport",
+      "description": "Teleports the element's template body to the provided CSS selector target.\n\n[Alpine Reference](https://alpinejs.dev/directives/teleport)"
+    },
+    {
+      "name": "x-if",
+      "description": "Conditionally renders the element (must be the only child of a `<template>`).\n\n[Alpine Reference](https://alpinejs.dev/directives/if)"
+    },
+    {
+      "name": "x-id",
+      "description": "Generates a unique id once per page load and exposes it through `$id('<argument>')`.\n\n[Alpine Reference](https://alpinejs.dev/directives/id)"
+    }
+  ]
+}
